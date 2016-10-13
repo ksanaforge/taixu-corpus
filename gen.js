@@ -3,7 +3,7 @@ const fs=require("fs");
 const sourcepath="xml/";
 var files=fs.readFileSync("./file.lst","utf8").split(/\r?\n/);
 //for (var i=0;i<24;i++) files.shift();
-files.length=5;
+//files.length=5;
 
 const bookStart=function(){}
 const bookEnd=function(){}
@@ -17,9 +17,9 @@ const fileStart=function(fn,i){
 	this.putField("file",fn,kpos);
 }
 var options={name:"taixu",inputFormat:"accelon3",
-articleTag:"文",
+article:"文",subTree:"文",
 bitPat:"taixu",
-autostart:true,textOnly:true}; //set textOnly not to build inverted
+autoStart:true,textOnly:true}; //set textOnly not to build inverted
 
 var corpus=createCorpus(options);
 corpus.setHandlers(
