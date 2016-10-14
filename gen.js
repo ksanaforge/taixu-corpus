@@ -17,7 +17,7 @@ const fileStart=function(fn,i){
 	this.putField("file",fn,kpos);
 }
 var options={name:"taixu",inputFormat:"accelon3",
-article:"文",subTree:"文",
+article:"文",subtoc:"文",
 bitPat:"taixu",
 autoStart:true,textOnly:true}; //set textOnly not to build inverted
 
