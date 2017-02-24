@@ -1,4 +1,9 @@
-const {createCorpus}=require("ksana-corpus-builder");
+var createCorpus=null
+try {
+	createCorpus=require("ksana-corpus-builder").createCorpus;
+} catch(e){
+	createCorpus=require("ksana-corpus-lib").createCorpus;
+}
 const fs=require("fs");
 const sourcepath="xml/";
 var files=fs.readFileSync("./file.lst","utf8").split(/\r?\n/);
