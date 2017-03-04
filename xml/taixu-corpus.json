@@ -1,0 +1,17 @@
+{
+	"name":"taixu",
+	"title":"太虛大師全書",
+	"inputFormat":"accelon3",
+	"bitPat":"taixu",
+	"articleFields":["head","ptr","def","p"],
+	"schema":{
+		"article":"文",
+		"group":"編",
+		"category":"類"
+	},
+	"subtoc":"文",
+	"files":[
+		"taixu01.xml",
+		"taixu02.xml"
+	]
+}
