@@ -11,15 +11,19 @@ var files=fs.readFileSync("./file.lst","utf8").split(/\r?\n/);
 //files.length=5;
 
 var composes=["第零編"],categories=[], groupid;
-const capture=function(){return true;}
-const on_compose_close=function(tag,closing,kpos,tpos){
-	const compose=this.popText();
-	composes.push(compose);
+
+const on_compose=function(tag,closing,kpos,tpos,start,end){
+	if (closing){
+		const compose=this.substring(start,end);
+		composes.push(compose);		
+	}
 }
 
-const on_category_close=function(tag,closing,kpos,tpos){
-	const cat=this.popText();
-	this.putGroup(groupid+";"+(composes.length-1)+"@"+cat,kpos,tpos);
+const on_category=function(tag,closing,kpos,tpos,start,end){
+	if (closing){
+		const cat=this.substring(start,end);
+		this.putGroup(groupid+";"+(composes.length-1)+"@"+cat,kpos,tpos);		
+	}
 }
 
 const bookStart=function(){}
@@ -32,7 +36,8 @@ const fileStart=function(fn,i){
 }
 
 var options={name:"taixu",inputFormat:"accelon3",
-article:"文",subtoc:"文",
+article:"文",
+toc:"文",
 bitPat:"taixu",
 groupPrefix:composes,
 articleFields:["head","ptr","def","p"],
@@ -41,8 +46,8 @@ autoStart:true}; //set textOnly not to build inverted
 
 var corpus=createCorpus(options);
 corpus.setHandlers(
-	{"類":capture,"編":capture},
-	{"類":on_category_close,"編":on_compose_close},
+	{"類":on_category,"編":on_compose},
+	{"類":on_category,"編":on_compose},
 	{bookStart,bookEnd,fileStart}  
 );
 console.time("build")
