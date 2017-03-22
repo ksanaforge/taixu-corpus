@@ -2,6 +2,7 @@
 	"id":"taixu",
 	"title":"太虛大師全書",
 	"inputFormat":"accelon3",
+	"extrasize":4194304,
 	"schema":{
 		"article":"文",
 		"group":"編",
