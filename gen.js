@@ -4,11 +4,31 @@ try {
 } catch(e){
 	createCorpus=require("ksana-corpus-lib").createCorpus;
 }
+//for (var i=0;i<24;i++) files.shift();
+//files.length=5;
+
+var createCorpusFromJSON=null;
+try{
+	createCorpusFromJSON=require("ksana-corpus-builder").createCorpusFromJSON;
+} catch(e){
+	createCorpusFromJSON=require("ksana-corpus-lib").createCorpusFromJSON;
+}
+
+createCorpusFromJSON("xml/taixu-corpus.json",function(err,res){
+	console.log(res)
+	if (err)console.log(err);
+});
+
+
+
+/*var createCorpusFromJSON=null;
+
 const fs=require("fs");
 const sourcepath="xml/";
 var files=fs.readFileSync("./file.lst","utf8").split(/\r?\n/);
-//for (var i=0;i<24;i++) files.shift();
-//files.length=5;
+
+
+
 
 var composes=["第零編"],categories=[], groupid;
 
@@ -35,10 +55,9 @@ const fileStart=function(fn,i){
 	groupid=fn.substr(0,fn.length-4);//remove .xml
 }
 
-var options={name:"taixu",inputFormat:"accelon3",
+var options={id:"taixu",inputFormat:"accelon3",
 article:"文",
 toc:"文",
-bitPat:"taixu",
 groupPrefix:composes,
 articleFields:["head","ptr","def","p"],
 title:"太虛大師全書",
@@ -61,3 +80,4 @@ corpus.writeKDB("taixu.cor",function(byteswritten){
 
 console.timeEnd("build")
 console.log(corpus.totalPosting,corpus.tPos);
+*/
