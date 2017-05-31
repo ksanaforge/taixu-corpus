@@ -3,6 +3,7 @@
 	"title":"太虛大師全書",
 	"inputFormat":"accelon3",
 	"extrasize":4194304,
+	"removePunc":true,
 	"schema":{
 		"article":"文",
 		"group":"編",
